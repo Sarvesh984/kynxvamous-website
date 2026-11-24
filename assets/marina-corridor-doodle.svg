@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Marathon route along Kamarajar Salai from near Napier Bridge to Mylapore, Chennai, 10.6 km, out and back">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cfe3ea" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#e3eff3" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4a53a"/>
+      <stop offset="1" stop-color="#9a6f1c"/>
+    </linearGradient>
+    <radialGradient id="fadeG" cx="0.5" cy="0.5" r="0.62">
+      <stop offset="0.55" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="560">
+      <rect width="900" height="560" fill="url(#fadeG)"/>
+    </mask>
+    <filter id="glow" x="-50%" y="-10%" width="200%" height="120%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .sans  { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .lbl { font-size: 12px; fill: #1f2a37; letter-spacing: 0.04em; }
+    .coord { font-size: 10px; fill: #6b7785; letter-spacing: 0.12em; }
+    .area { font-size: 10px; letter-spacing: 0.34em; fill: #1f2a37; opacity: 0.32; }
+
+    /* one 4s loop for everything that moves */
+    .route { stroke-dasharray: 1; stroke-dashoffset: 1; animation: route 4s cubic-bezier(.65,0,.25,1) 1 forwards; }
+    .spur  { stroke-dasharray: 1; stroke-dashoffset: 1; animation: spur 4s cubic-bezier(.65,0,.25,1) 1 forwards; }
+    .n1 { opacity: 0; animation: n1 4s ease 1 forwards; }
+    .n2 { opacity: 0; animation: n2 4s ease 1 forwards; }
+    .n3 { opacity: 0; animation: n3 4s ease 1 forwards; }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2s ease-out 1 forwards; }
+
+    @keyframes route {
+      0%   { stroke-dashoffset: 1; opacity: 1; }
+      60%  { stroke-dashoffset: 0; opacity: 1; }
+      90%  { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes spur {
+      0%, 55% { stroke-dashoffset: 1; opacity: 1; }
+      70%     { stroke-dashoffset: 0; opacity: 1; }
+      90%     { stroke-dashoffset: 0; opacity: 1; }
+      100%    { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes n1 { 0%, 18% { opacity: 0; } 28% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 1; } }
+    @keyframes n2 { 0%, 38% { opacity: 0; } 48% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 1; } }
+    @keyframes n3 { 0%, 54% { opacity: 0; } 64% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 1; } }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(3.4); opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .route, .spur { animation: none; stroke-dashoffset: 0; }
+      .n1, .n2, .n3 { animation: none; opacity: 1; }
+      .pulse { animation: none; opacity: 0; }
+    }
+  </style>
+
+  <!-- transparent background: sits on white -->
+
+  <!-- sea (edges fade out softly) -->
+  <g mask="url(#fade)">
+    <g transform="translate(-80 0)">
+      <path d="M600 0 L598 58 L592 141 L580 187 L566 241 L554 301 L541 361 L526 421 L507 481 L493 529 L486 560 L1000 560 L1000 0 Z" fill="url(#sea)"/>
+    </g>
+  </g>
+
+  <g transform="translate(-80 0)">
+    <!-- shoreline -->
+    <path d="M598 58 L592 141 L580 187 L566 241 L554 301 L541 361 L526 421 L507 481 L493 529 L486 560" fill="none" stroke="#8fb2bf" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M624 58 L618 141 L606 187 L592 241 L580 301 L567 361 L552 421 L533 481 L519 529 L512 560" fill="none" stroke="#8fb2bf" stroke-width="0.7" stroke-dasharray="2 6" opacity="0.7" stroke-linejoin="round"/>
+
+    <!-- area names -->
+    <text class="sans area" x="272" y="76">EGMORE</text>
+    <text class="sans area" x="310" y="301">ROYAPETTAH</text>
+    <text class="sans area" x="352" y="508">MYLAPORE</text>
+    <text class="sans area" x="537" y="300" text-anchor="middle" transform="rotate(-80 537 300)" style="opacity:.4">MARINA BEACH</text>
+    <text class="sans area" x="770" y="300" text-anchor="middle" transform="rotate(-90 770 300)" style="fill:#5f8796;opacity:.7">BAY OF BENGAL</text>
+
+    <!-- spur north of the junction -->
+    <path class="spur" pathLength="1" fill="none" stroke="#c9a24e" stroke-width="9" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"
+          d="M545 141 L550 112 L555 91 L560 73 L565 58"/>
+    <path class="spur" pathLength="1" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+          d="M545 141 L550 112 L555 91 L560 73 L565 58"/>
+
+    <!-- main route -->
+    <path class="route" pathLength="1" fill="none" stroke="#c9a24e" stroke-width="9" stroke-opacity="0.25" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"
+          d="M470 119 L479 126 L502 140 L545 141 L541 163 L535 187 L529 211 L524 241 L519 271 L515 301 L511 334 L507 367 L503 391 L499 415 L494 433 L488 457 L481 487 L475 511 L470 529"/>
+    <path class="route" pathLength="1" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+          d="M470 119 L479 126 L502 140 L545 141 L541 163 L535 187 L529 211 L524 241 L519 271 L515 301 L511 334 L507 367 L503 391 L499 415 L494 433 L488 457 L481 487 L475 511 L470 529"/>
+
+    <!-- start / finish (always on, pulsing) -->
+    <circle class="pulse" cx="470" cy="119" r="6" fill="#d4a53a"/>
+    <circle cx="470" cy="119" r="6" fill="#ffffff" stroke="#9a6f1c" stroke-width="2"/>
+    <text class="sans lbl" x="454" y="115" text-anchor="end">Start &amp; Finish</text>
+    <text class="sans coord" x="454" y="131" text-anchor="end">13.0697° N · 80.2779° E</text>
+
+    <!-- Chepauk -->
+    <g class="n1">
+      <circle cx="535" cy="187" r="4" fill="#ffffff" stroke="#9a6f1c" stroke-width="1.5"/>
+      <line x1="527" y1="187" x2="490" y2="187" stroke="#1f2a37" stroke-opacity="0.25"/>
+      <text class="sans lbl" x="482" y="183" text-anchor="end">Chepauk</text>
+      <text class="sans coord" x="482" y="199" text-anchor="end">KAMARAJAR SALAI</text>
+    </g>
+
+    <!-- Lighthouse -->
+    <g class="n2">
+      <circle cx="487" cy="465" r="4" fill="#ffffff" stroke="#9a6f1c" stroke-width="1.5"/>
+      <line x1="479" y1="465" x2="440" y2="465" stroke="#1f2a37" stroke-opacity="0.25"/>
+      <text class="sans lbl" x="432" y="461" text-anchor="end">Lighthouse</text>
+      <text class="sans coord" x="432" y="477" text-anchor="end">MARINA BEACH</text>
+    </g>
+
+    <!-- turnaround -->
+    <g class="n3">
+      <circle class="pulse" cx="470" cy="529" r="6" fill="#d4a53a"/>
+      <circle cx="470" cy="529" r="6" fill="#9a6f1c"/>
+      <circle cx="470" cy="529" r="2.4" fill="#ffffff"/>
+      <line x1="478" y1="529" x2="516" y2="529" stroke="#1f2a37" stroke-opacity="0.25"/>
+      <text class="sans lbl" x="524" y="525">Turnaround · Mylapore</text>
+      <text class="sans coord" x="524" y="541">13.0355° N · 80.2778° E</text>
+    </g>
+  </g>
+
+  <!-- compass -->
+  <g transform="translate(800 56)">
+    <circle r="16" fill="none" stroke="#1f2a37" stroke-opacity="0.2"/>
+    <path d="M0 -10 L4 4 L0 1 L-4 4 Z" fill="#9a6f1c"/>
+    <text class="sans coord" y="30" text-anchor="middle">N</text>
+  </g>
+</svg>
